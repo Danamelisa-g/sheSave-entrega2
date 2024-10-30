@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user</title>
+    <link rel="stylesheet" href="configuracion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gidugu&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+  <div class="announcement-bar">
+    <div class="announcement-bar-content container">
+      <div class="content-info">
+        <p>
+          <i class="fa-solid fa-phone"></i>
+          3013078097
+        </p>
+        <p>
+          <i class="fa-regular fa-envelope"></i>
+            shesavedd@save.women.com
+        </p>
+      </div>
+      <div class="social-links">
+        <a href="#" class="btn-social-link">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" class="btn-social-link">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="btn-social-link">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+</div>
+ <header>
+  <div class="container section-logo">
+      <img src="../../assets/logo.png" alt="she save logo">
+      <nav>
+          <a href="../home/index.html">Inicio</a>
+          <a href="../list_product/Bag.html">Tienda</a>
+          <a href="#">Blog</a>
+           <a href="../about_us/aboutUs.html">Nosotros</a>
+           <a href="#">Contacto</a>
+      </nav>
+      <div class="container-action">
+          <button>
+              <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button>
+              <a href="../configuracion/configuracion.html"><i class="fa-regular fa-user"></i></a>
+          </button>
+          <button>
+              <i class="fa-regular fa-bell"></i>
+          </button>
+          <button>
+              <a href="../carrito/carrito.html"> <i class="fa-solid fa-cart-shopping"></i></a>
+          </button>
+      </div>
+  </div>
+</header>
+    <main>
+        <div class="profile-container">
+            <div class="avatar">
+                <img src="../../assets/female.png" alt="Persona">
+            </div>
+            <h2 id="namePerson"></h2>
+            <div class="profile-actions">
+                <button id="changeInfo" class="action-btn">Cambio de información</button>
+                <button id="changePassword" class="action-btn">Cambio de contraseña</button>
+                <button id="termsConditions" class="action-btn">Términos y condiciones</button>
+                <button id="closeSession" class="action-btn-close">Cerrar sesión</button>
+            </div>
+        </div>
+
+        <div id="container-info" class="change-info-container">
+          <div class="title-close">
+            <button id="closeCard" class="closeBtn"><i class="fa-solid fa-x"></i></button>
+            <h2 id="title"></h2>
+          </div>
+
+          <div class="input-label">
+            <h4 id="label-name"></h4>
+            <input id="input-name" class="input-text">
+          </div>
+
+          <div class="input-label">
+            <h4 id="label-email"></h4>
+            <input id="input-email" class="input-text">
+          </div>
+
+          <button id="confirmChanges" class="action-btn">Confirmar cambios</button>
+          <div id="errorEmailRepeated" class="alerta-error-email">Correo ya existente</div>
+          <div id="errorNameRepeated" class="alerta-error-email">Nombre ya existente</div>
+        </div>
+
+        <div id="container-password" class="change-info-container">
+          <div class="title-close">
+            <button id="closeCardPassword" class="closeBtn"><i class="fa-solid fa-x"></i></button>
+            <h2 id="title"></h2>
+          </div>
+
+          <div class="input-label">
+            <h4 id="label-newPassword"></h4>
+            <input id="input-newPassword" class="input-text">
+          </div>
+
+          <button id="confirmChangesPassword" class="action-btn">Confirmar cambios</button>
+          <div id="errorPasswordRepeated" class="alerta-error-email">Contraseña igual a la anterior</div>
+        </div>
+    </main>
+    <script src="../data/dataUser.js"></script>
+    <script src="./configuracion.js"></script>
+</body>
+</html>

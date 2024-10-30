@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="login.css">
+    <title>FORMULARIO DE REGISTRO E INICIO SESIÓN</title>
+</head>
+<body>
+        <div class="form-information">
+
+            <div class="form-information-childs">
+                <div class="usuario">
+                    <img src="../../assets/WhatsApp_Image_2024-09-17_at_9.50.25_PM-removebg-preview.png" alt="hola">
+                </div>
+                <h2>Inicia Sesión con</h2>
+                <div class="icons">
+                    <i class='bx bxl-google'></i>
+                    <i class='bx bxl-github'></i>
+                    <i class='bx bxl-linkedin' ></i>
+                </div>
+                <p>o usa tu email para Iniciar Sesión</p>
+                <form class="form form-register" id="loginForm">
+                    <div>
+                        <label >
+                            <i class='bx bx-envelope' ></i>
+                            <input id="inputEmail" type="email" placeholder="Correo Electronico" name="userEmail" >
+                        </label>
+                    </div>
+                   <div>
+                        <label>
+                            <i class='bx bx-lock-alt' ></i>
+                            <input id="inputPassword" type="password" placeholder="Contraseña" name="userPassword">
+                        </label>
+                   </div>
+                   
+                    <a href="">
+                        <input class="buttonLogin" id="submitButtonLogin" type="submit" value="Iniciar Sesión">
+                    </a>
+
+                    <div class="form-register-link">
+                        <p>¿No tienes cuenta?</p>
+                        <a href="../register/register.html">Regístrate aquí</a>
+                    </div>
+
+                    <p id="errorMatching" class="alerta-error-matching">Correo o contraseña incorrectos</p>
+                    <p id="errorInputs" class="alerta-error">Todos los campos son obligatorios</p>
+                    <div id="completeLogin" class="alerta-exito">Te registraste correctamente</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../data/dataUser.js"></script>
+    <script src="./login.js"></script>
+</body>
+</html>

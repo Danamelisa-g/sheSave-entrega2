@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <link rel="stylesheet" href="detailProduct.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gidugu&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="announcement-bar">
+        <div class="announcement-bar-content container">
+          <div class="content-info">
+            <p>
+              <i class="fa-solid fa-phone"></i>
+              3013078097
+            </p>
+            <p>
+              <i class="fa-regular fa-envelope"></i>
+                shesavedd@save.women.com
+            </p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="btn-social-link">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="#" class="btn-social-link">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="btn-social-link">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+    </div>
+    <header>
+        <div class="container section-logo">
+            <img src="../../assets/logo.png" alt="she save logo">
+            <nav>
+                <a href="../home/index.html">Inicio</a>
+                <a href="../list_product/Bag.html">Tienda</a>
+                <a href="#">Blog</a>
+                 <a href="../about_us/aboutUs.html">Nosotros</a>
+                 <a href="#">Contacto</a>
+            </nav>
+            <div class="container-action">
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button>
+                    <a href="../configuracion/configuracion.html"><i class="fa-regular fa-user"></i></a>
+                </button>
+                <button>
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <button>
+                    <a href="../carrito/carrito.html"> <i class="fa-solid fa-cart-shopping"></i></a>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="product-container">
+        <section class="product-image">
+            <img id="main-image" src="" alt="" />
+            <div class="back-to-home">
+              <a href="../list_product/Bag.html"><i class="fas fa-arrow-left"></i> Volver a la página principal</a>
+            </div>
+          </section>
+          <section class="product-details">
+            <h2 id="title"></h2>
+            <p id="description"></p>
+      
+            <h3 id="price"></h3>
+                  
+            <div class="product-actions">
+             <button id="cartButton" class="btn-add-to-cart">
+              <i class="fas fa-shopping-cart"></i> 
+               Añadir al carrito
+              </button>
+              <button class="btn-buy-now">
+                <i class="fas fa-credit-card"></i>
+                Comprar ahora
+              </button>
+              <button id="favoritesButton" class="btn-add-to-favorites">
+                <i class="fas fa-heart"></i> 
+                  Añadir a favoritos
+              </button>
+            </div>
+          </section>
+    </main>
+    <script src="../data/Product.js"></script>
+    <script src="../data/dataProducts.js"></script>
+    <script src="./detailProduct.js"></script>
+</body>
+</html>

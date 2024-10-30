@@ -1,0 +1,228 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    list-style: none;
+}
+body {
+    
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    overflow-x: auto; 
+    height: 00vh; 
+    .horizontal-page {
+        display: flex;
+        width: 200vw; 
+        height: 100vh; 
+        scroll-behavior: smooth; 
+    }
+    
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgb(218, 0, 116);;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 5px 5px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .navbar a:hover {
+        background-color: #ED99BB;
+        color: #fff;
+    }
+    .info-text {
+        
+        padding: 40px;
+        border-radius: 10px;
+        width: 600px; 
+        position: absolute;
+        top: 50px; 
+        left: 50px; 
+   }
+   .main-title {
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 15px;
+    }
+    
+   
+    .description {
+        font-size: 16px;
+        color: white;
+        line-height: 1.5;
+        font-weight: normal;
+    }
+
+    
+    .page-section1 {
+        flex: 0 0 100vw; 
+        height: 100vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        color: white;
+        background-color: #ED99BB; /* Aquí aplicas el color que desees */
+    }
+    .page-section2 {
+        flex: 0 0 100vw; 
+        height: 100vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        color: white;
+        background-color: #BE8AC0; 
+    }
+    .page-section3 {
+        flex: 0 0 100vw; 
+        height: 100vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        color: white;
+        background-color: #9280BC; 
+    }
+        
+    .TEXT1 {
+        margin-top: -460px;
+        margin-left: -10px;
+        top: 40px;
+        font-size: 300px;
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+    }
+.TEXT2{
+    margin-top: -360px;
+    margin-left: 1510px;
+    top: 40px;
+    font-size: 350px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+
+}
+.TEXT3{
+    margin-top: -420px;
+    margin-left: 2000px;
+
+    top: 70px;
+    font-size: 370px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+
+}
+.TEXT4{
+    margin-top: -460px;
+    margin-left: 3200px;
+
+    top: 50px;
+    font-size: 400px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+
+}
+.parrafo1{
+    margin-top: -420px;
+    margin-left: 100px;
+    line-height: 1%;
+
+    top: 50px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+}
+
+.collage-img {
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+.img1 {
+    width: 100px;
+    top: 80px;
+    left: 3700px;
+    
+    
+}
+.img2 {
+    width: 160px;
+    top: 540px;
+    left: 350px
+    
+    
+}
+
+
+
+
+.img3 {
+    width: 100px;
+    top: 80px;
+    left: 400px;
+    
+  
+}
+
+.img4 {
+    width: 150px;
+    top: 80px;
+    left: 3850px;
+    
+}
+
+  
+    
+}
+
+
+.img5 {
+    width: 130px;
+    top: 80px;
+    left: 4050px;
+   
+   
+}
+
+.img6 {
+    width: 120px;
+    top: 540px;
+    left: 40px
+    
+}
+.img8{
+    width: 120px;
+    top: 540px;
+    left: 200px
+    
+  
+}
