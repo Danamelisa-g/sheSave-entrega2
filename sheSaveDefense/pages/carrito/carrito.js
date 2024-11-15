@@ -66,6 +66,8 @@ function trashProduct(index) {
 
     localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
 
+    showToast("Producto eliminado correctamente", "#Ff0000")
+
     window.location.reload()
 }
 
@@ -73,6 +75,18 @@ function validateToken() {
   if (!loggedUser || !registeredUsers) {
       window.location.href = "../login/login.html"
   }
+}
+
+function showToast(message, bgColor = "#4caf50") {
+  const toast = document.getElementById('toast');
+  toast.style.backgroundColor = bgColor;
+  toast.textContent = message;
+  toast.classList.add('show');
+
+  // Ocultar la notificación después de 3 segundos
+  setTimeout(() => {
+      toast.classList.remove('show');
+  }, 3000);
 }
 
 validateToken()

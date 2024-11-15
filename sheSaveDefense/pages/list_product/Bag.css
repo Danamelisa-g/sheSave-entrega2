@@ -123,6 +123,29 @@ body{
           
     }
  }
+
+ .toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #4caf50; /* Color de fondo (verde) */
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 1;
+    right: 20px;
+    bottom: 30px;
+    font-size: 16px;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
  
  .deslizador{
     width: 100%;

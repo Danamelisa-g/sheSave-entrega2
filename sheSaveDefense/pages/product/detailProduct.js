@@ -1,23 +1,33 @@
 const params = new URLSearchParams(window.location.search)
 const nameURL = params.get("name")
 
-function getProduct() {
-    for (let i = 0; i < data.length; i++) {
-        const map = data[i];
-        if (map["name"] === nameURL) {
-            let product = new Product(map["id"], map["name"], map["description"], map["images"], map["price"], map["categoryName"], map["stars"])
-            return product
-        }
-    }
+let products = []
+let currentProductThis
+
+async function getProducts() {
+    let response = await fetch("https://raw.githubusercontent.com/Danamelisa-g/sheSave-entrega2/refs/heads/master/sheSaveDefense/pages/data.json")
+    let json = await response.json()
+    parseToProducts(json)
 }
 
-function renderProduct() {
+function parseToProducts(dataThis) {
+    for (let i = 0; i < dataThis.length; i++) {
+        const map = dataThis[i];
+        let product = new Product(map["id"], map["name"], map["description"], map["images"], map["price"], map["categoryName"], map["stars"])
+        products.push(product)
+    }
+    const product = products.find((pd) => pd.name === nameURL)
+    currentProductThis = product
+    renderProduct(currentProductThis)
+    renderRecommendedProducts(currentProductThis)
+}
+
+async function renderProduct(product) {
     let title = document.getElementById("title")
     let description = document.getElementById("description")
     let price = document.getElementById("price")
     let mainImage = document.getElementById("main-image")
-
-    const product = getProduct()
+    
     if (product) {
         mainImage.src = product.images[0]
         mainImage.alt = product.name
@@ -27,33 +37,38 @@ function renderProduct() {
     }
 }
 
-function renderRecommendedProducts() {
+async function renderRecommendedProducts(currentProductThis) {
     let container = document.getElementById("recommended-products");
     container.innerHTML = "";
-    const currentProduct = getProduct();
+
+    const currentProduct = currentProductThis
     if (!currentProduct) {
         console.error("No se encontró el producto actual");
         return;
     }
-    const recommendedProducts = data
-        .map((item) => new Product(item.id, item.name, item.description, item.images, item.price, item.categoryName, item.stars))
-        .filter((pd) => pd.name !== currentProduct.name)
+
+    const recommendedProducts = products
+    .filter((pd) => pd.name !== currentProduct.name)
+    .map((item) => new Product(item.id, item.name, item.description, item.images, item.price, item.categoryName, item.stars))
 
     for (let i = 0; i < recommendedProducts.length; i++) {
         const product = recommendedProducts[i];
-        container.innerHTML += product.recommendedProductHTML();
+        container.innerHTML += product.recommendedProductHTML(i);
     }
 }
 
 function productSelected(index) {
-    let product = data.filter((pd) => pd.id === index)
+    let product = products.filter((pd) => pd.id === (index + 1))
     window.location.href = "../product/detailProduct.html?name=" + encodeURIComponent(product[0].name);
 }
 
+
+// obtiene el usuario loggeado
 const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+// obtiene los usuarios registrados
 const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || []
 
-document.getElementById("cartButton").addEventListener("click", function(event) {
+document.getElementById("cartButton").addEventListener("click", async function(event) {
     event.preventDefault();
     const userIndex = registeredUsers.findIndex(user => user.email === loggedUser.email);
 
@@ -64,16 +79,24 @@ document.getElementById("cartButton").addEventListener("click", function(event) 
 
     let currentCartArray = registeredUsers[userIndex].cart || [];
 
-    const currentProduct = getProduct();
+    if (currentCartArray.length !== 0) {
+        const existProduct = currentCartArray.find((pd) => pd.id === currentProductThis.id);
+        if (existProduct) {
+            showToast("Producto ya agregado", "#Ff0000");
+            return;
+        }
+    }  
 
-    currentCartArray.push(currentProduct);
+    currentCartArray.push(currentProductThis);
 
     localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+    showToast("Producto agregado correctamente")
 
     window.location.href = "../carrito/carrito.html"
 })
 
-document.getElementById("favoritesButton").addEventListener("click", function(event) {
+/*document.getElementById("favoritesButton").addEventListener("click", function(event) {
     event.preventDefault();
 
     const userIndex = registeredUsers.findIndex(user => user.email === loggedUser.email);
@@ -85,15 +108,15 @@ document.getElementById("favoritesButton").addEventListener("click", function(ev
 
     let currentFavoriteArray = registeredUsers[userIndex].favorites || [];
 
-    const currentProduct = getProduct();
+    const currentProduct = getProducts();
 
     currentFavoriteArray.push(currentProduct)
 
     localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
-});
+});*/
 
 function fasterAddCart(index) {
-    let product = data.find((pd) => pd.id === index);
+    let product = products.find((pd) => pd.id === index);
     const userIndex = registeredUsers.findIndex(user => user.email === loggedUser.email);
 
     if (userIndex === -1) {
@@ -102,12 +125,22 @@ function fasterAddCart(index) {
     }
 
     let currentCartArray = registeredUsers[userIndex].cart || [];
+    
+    if (currentCartArray.length !== 0) {
+        const existProduct = currentCartArray.find((pd) => pd.id === product.id);
+        if (existProduct) {
+            showToast("Producto ya agregado", "#Ff0000");
+            return;
+        }
+    }    
 
     currentCartArray.push(product);
 
     registeredUsers[userIndex].cart = currentCartArray;
-
+    
     localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+    showToast("Producto añadido correctamente")
 }
 
 function validateToken() {
@@ -116,6 +149,18 @@ function validateToken() {
     }
 }
 
+function showToast(message, bgColor = "#4caf50") {
+    const toast = document.getElementById('toast');
+    toast.style.backgroundColor = bgColor;
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    // Ocultar la notificación después de 3 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+
 validateToken()
-renderProduct()
-renderRecommendedProducts()
+getProducts()
