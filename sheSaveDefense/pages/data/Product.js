@@ -42,7 +42,7 @@ class Product {
 						${this.getStarsHTML()}
 					</div>
 					<h3>${this.name}</h3>
-					<span class="add-cart">
+					<span onclick="fasterAddCart(${this.id})" class="add-cart">
 						<i class="fa-solid fa-basket-shopping"></i>
 					</span>
 					<p class="price">
@@ -51,6 +51,38 @@ class Product {
 				</div>
 			</div>
         `;
+  }
+
+  recommendedProductHTML(pos) {
+    return `
+      <div class="card-product" onClick="productSelected(${pos})">
+                <div class="container-img">
+                    <img src="${this.images[0]}" alt="alarma" />
+                    
+                    <div class="button-group">
+                        <span>
+                            <i class="fa-regular fa-eye"></i>
+                        </span>
+                        <span>
+                            <i class="fa-regular fa-heart"></i>
+                        </span>
+                        <span>
+                            <i class="fa-solid fa-code-compare"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="content-card-product">
+                    <div class="stars">
+                        ${this.getStarsHTML()}
+                    </div>
+                    <h3>${this.name}</h3>
+                    <span onclick="fasterAddCart(${this.id})" class="add-cart">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </span>
+                    <p class="price">$${this.price}</p>
+                </div>
+            </div>
+    `
   }
 
   cartProduct(pos) {

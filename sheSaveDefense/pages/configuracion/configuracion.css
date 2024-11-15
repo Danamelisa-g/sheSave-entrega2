@@ -318,12 +318,3 @@ h2 {
     background-color: rgb(104, 38, 38);
     color: white;
 }
-
-.alerta-error-email {
-    display: none;
-    color: #F66060;
-    padding: .5rem 1rem;
-    margin-top: 10px;
-    font-weight: 500;
-    font-size: .8rem;
-  }

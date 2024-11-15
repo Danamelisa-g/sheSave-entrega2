@@ -1,6 +1,8 @@
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
+    const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || []
+
     const email = document.getElementById("inputEmail").value;
     const password = document.getElementById("inputPassword").value;
 
@@ -17,14 +19,22 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         return;
     }
 
-    if (email != person1.email || password != person1.password) {
+    const userIndex = registeredUsers.findIndex(user => user.email === email && user.password === password);
+
+
+    if (userIndex === -1) {
         notMatchingUser.style.display = "block"
         return;
-    } 
-
-    if (email == person1.email && password == person1.password) {
-        completeLogin.style.display = "block"
-        window.location.href = "../list_product/Bag.html"
     }
 
+    let loggedUser = {
+        email: email,
+        password: password
+    }
+
+    localStorage.setItem("loggedUser", JSON.stringify(loggedUser))
+
+    completeLogin.style.display = "block"
+
+    window.location.href = "../list_product/Bag.html"
 });

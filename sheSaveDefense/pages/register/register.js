@@ -18,10 +18,19 @@ document.getElementById("registerForm").addEventListener("submit", function(even
         return;
     }
 
-    if (email == person1.email) {
+    let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+    const emailExists = registeredUsers.some(user => user.email === email);
+    if (emailExists) {
         emailRepeated.style.display = "block";
         return;
     }
+
+    let newUser = new User("", userName, email, password);
+
+    registeredUsers.push(newUser);
+
+    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
 
     completeRegister.style.display = "block";
 

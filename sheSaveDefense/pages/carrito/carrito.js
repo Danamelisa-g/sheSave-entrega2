@@ -1,15 +1,8 @@
+const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || []
+
 
 let currentCartArray = [];  
-
-function parseToProducts() {
-  for (let i = 0; i < person1.cart.length; i++) {
-      let map = person1.cart[i]
-      let product = new Product(map["id"], map["name"], map["description"], map["images"], map["price"], map["categoryName"], map["stars"])
-      currentCartArray.push(product)
-  }
-}
-
-
 function getCart() {
   const noContent = document.getElementById("noCart");
 
@@ -19,7 +12,9 @@ function getCart() {
   let numberCart = document.getElementById("numberCart");
   let total = document.getElementById("totalPrice");
 
-  if (currentCartArray.length > 0) {
+  const user = registeredUsers.find(user => user.email === loggedUser.email);
+
+  if (user && user.cart && user.cart.length > 0) {
     noContent.style.display = "none";
     headerInfo.style.display = "flex";
     footerInfo.style.display = "flex";
@@ -27,6 +22,19 @@ function getCart() {
     numberCart.style.display = "block";
     total.style.display = "block";
     makeOrder.style.display = "block"
+
+    currentCartArray = user.cart.map(
+      (item) =>
+        new Product(
+          item.id,
+          item.name,
+          item.description,
+          item.images,
+          item.price,
+          item.categoryName,
+          item.stars
+        )
+    );
 
     numberCart.innerHTML = currentCartArray.length;
 
@@ -44,5 +52,28 @@ function getCart() {
   }
 }
 
-parseToProducts()
+function trashProduct(index) {
+    const userIndex = registeredUsers.findIndex(user => user.email === loggedUser.email);
+
+    if (userIndex === -1) {
+        console.error("Usuario no encontrado.");
+        return;
+    }
+
+    let currentCartArray = registeredUsers[userIndex].cart || [];
+
+    currentCartArray.splice(index, 1);
+
+    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+    window.location.reload()
+}
+
+function validateToken() {
+  if (!loggedUser || !registeredUsers) {
+      window.location.href = "../login/login.html"
+  }
+}
+
+validateToken()
 getCart();
