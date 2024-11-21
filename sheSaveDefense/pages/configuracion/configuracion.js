@@ -17,7 +17,7 @@ function getNameLogged() {
 
 function validateToken() {
     if (!loggedUser || !registeredUsers) {
-        window.location.href = "../login/login.html"
+        window.location.href = "../home/index.html"
     }
 }
 

@@ -3,8 +3,6 @@ const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [
 
 function validateToken() {
     if (!loggedUser || !registeredUsers) {
-        window.location.href = "../login/login.html"
+        window.location.href = "../home/index.html"
     }
 }
-
-validateToken()
